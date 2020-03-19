@@ -7,7 +7,7 @@ pipeline {
             }
         }
         stage("initial Setup"){
-            pom = readMavenPom file: '/path/to/pom.xml'
+            pom = readMavenPom file: 'pom.xml'
             PROJECT = pom.artifactId
             VERSION = pom.version
         }
