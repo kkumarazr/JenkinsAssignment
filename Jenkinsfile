@@ -15,7 +15,7 @@ pipeline {
                 }
             }
         }
-        stage("Build ${PROJECT} and ${VERSION}") {
+        stage("Build \"${PROJECT}\" and \"${VERSION}\") {
             steps{  
                sh "mvn clean install -DskipTests"
             }
