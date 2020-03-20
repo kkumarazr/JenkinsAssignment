@@ -22,7 +22,7 @@ pipeline {
             }
         }
         stage("Awaiting for Approval") {
-            steps{
+           steps{
            script{
              timeout(time: 5, unit: 'MINUTES') {
                  input( id: 'Deploy Id', message: 'Deploy environment?', ok: 'Deploy')
