@@ -22,7 +22,6 @@ pipeline {
             }
         }
         stage("Awaiting for Approval") {
-            #deploying ${PROJECT} and ${VERSION}"){
            script{
              timeout(time: 5, unit: 'MINUTES') {
                  input( id: 'Deploy Id', message: 'Deploy environment?', ok: 'Deploy')
@@ -30,7 +29,6 @@ pipeline {
            }
         }
         stage("Deploying") }
-    #${PROJECT} and ${VERSION}") {
           steps{
             echo "Deploying the application"
           }
