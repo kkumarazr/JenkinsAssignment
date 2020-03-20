@@ -39,4 +39,4 @@ pipeline {
              sh "cat `$jenkinsassignment.txt`"
            }
         }
-    }
+    
