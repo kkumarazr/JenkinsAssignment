@@ -15,9 +15,10 @@ pipeline {
                 }
             }
         }
-        stage("Build \"${PROJECT}\" and \"${VERSION}\") {
-            steps{  
-               sh "mvn clean install -DskipTests"
+        stage("Build") {
+            steps{
+                echo "Building ${PROJECT} and ${VERSION}" 
+                sh "mvn clean install -DskipTests"
             }
         }
         stage("Awaiting for Approval deploying ${PROJECT} and ${VERSION}"){
