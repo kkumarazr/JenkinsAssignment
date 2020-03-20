@@ -7,9 +7,13 @@ pipeline {
             }
         }
         stage("initial Setup"){
+            steps{
+                script{
             pom = readMavenPom file: 'pom.xml'
             PROJECT = pom.artifactId
             VERSION = pom.version
+                }
+            }
         }
         stage("Build ${PROJECT} and ${VERSION}") {
             steps{  
