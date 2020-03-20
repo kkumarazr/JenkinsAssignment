@@ -12,24 +12,20 @@ pipeline {
             pom = readMavenPom file: 'pom.xml'
             PROJECT = pom.artifactId
             VERSION = pom.version
-                }
+        }
+        stage("Build ${PROJECT} and ${VERSION}") {
+            steps{  
+               sh "mvn clean install -DskipTests"
             }
         }
-        stage("Build") {
-            steps{
-                echo "Building ${PROJECT} and ${VERSION}" 
-                sh "mvn clean install -DskipTests"
-            }
-        }
-        stage("Awaiting for Approval") {
-           steps{
-               script{
-               timeout(time: 5, unit: 'MINUTES') {
-               input( id: 'Deploy Id', message: 'Deploy environment?', ok: 'Deploy')
+        stage("Awaiting for Approval deploying ${PROJECT} and ${VERSION}"){
+           script{
+             timeout(time: 5, unit: 'MINUTES') {
+                 input( id: 'Deploy Id', message: 'Deploy environment?', ok: 'Deploy')
              }
            }
         }
-        stage("Deploying") {
+        stage("Deploying ${PROJECT} and ${VERSION}") {
           steps{
             echo "Deploying the application"
           }
@@ -40,7 +36,6 @@ pipeline {
              sh "cat `$jenkinsassignment.txt`"
            }
         }
-    
     }
 }
-}
+
